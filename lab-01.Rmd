@@ -137,11 +137,8 @@ visitors %>% filter(50000<n_2022, n_2022<100000) %>% count()
 _How many regions have more than 50 tourist attraction in the data set? (Hint: You will need to tabulate the data before filtering.)_
 
 ```{r Ex_g}
-#visitors %>% 
-#  _____(region) %>%
-#  filter(______)
+visitors %>% count(region) %>% filter(n>50)
 ```
-
 
 
 # Summarising Data
@@ -164,11 +161,11 @@ visitors %>%
 _Perform the same calculation for the 2021 admissions data._
 
 ```{r Ex_h}
-#visitors %>% 
-#  ______(
-#    __________,
-#    __________
-#  )
+visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021),
+    med_2021 = median(n_2021)
+  )
 ```
 
 All values in the output are `NA`!
@@ -177,7 +174,9 @@ All values in the output are `NA`!
 
 _What does `NA` stand for and why are you getting this as your answer to the previous question._
 
-**Write your answer here**
+**not applicable, because some data in the 2021 admissions is missing**
+
+
 
 
 
@@ -186,7 +185,13 @@ _What does `NA` stand for and why are you getting this as your answer to the pre
 
 _Look at the help pages for the `mean()` and `median()` commands to see what the input argument `na.rm` does. Edit your code from exercise h so that it computes the summary statistics where data is available._
 
-**Write your answer here**
+```{r Ex_j}
+  visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021, na.rm = TRUE),
+    med_2021 = median(n_2021, na.rm = TRUE)
+  )
+```
 
 
 
@@ -195,14 +200,7 @@ _Look at the help pages for the `mean()` and `median()` commands to see what the
 
 _Which setting (inside, outside or mixed) has the largest mean visitor numbers in 2022?_
 
-```{r Q7}
-visitors %>% 
-  group_by(setting) %>%
-  summarise(
-    mean_2022 = mean(n_2022),
-    med_2022 = median(n_2022)
-  )
-```
+
 
 ### Exercise k.
 
