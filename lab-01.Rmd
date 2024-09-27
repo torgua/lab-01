@@ -200,13 +200,15 @@ _Look at the help pages for the `mean()` and `median()` commands to see what the
 
 _Which setting (inside, outside or mixed) has the largest mean visitor numbers in 2022?_
 
-
+``` {r Ex 7}
+visitors %>% count(setting) %>% arrange(desc(n))
+```
 
 ### Exercise k.
 
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
+**The data is positively skewed so there are a few attractions with a much greater number of visitors acting as outliers**
 
 
 
